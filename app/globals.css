@@ -292,6 +292,26 @@ section.stats .section-title.upper { color: #4A007D; }
 .test-sep { color: #4A007D; font-weight: 700; }
 .test-loc { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #4A007D; text-transform: uppercase; }
 
+/* ============ MOBILE (≤640px) ============ */
+@media (max-width: 640px) {
+  /* Hero — centrar logo y textos, espacio bajo el form */
+  .hero-logo { justify-content: center; }
+  .hero h1 { text-align: center; }
+  .hero hr { margin: 20px auto; }
+  .hero p.lede { text-align: center; max-width: 100%; font-size: 17px; }
+  .hero-inner { padding-bottom: 60px; }
+
+  /* Mapa — más chico y sin overflow */
+  .caba-map img { width: 80vw !important; max-width: 320px !important; }
+
+  /* Testimonios — centrar cabecera, cards más compactas */
+  .test-head { text-align: center; max-width: 100%; }
+  .test-head h2 { white-space: normal; font-size: 22px; }
+  .test-head p { font-size: 16px; }
+  .test-card { min-height: auto; padding: 20px 18px 18px; }
+  .test-quote { font-size: 15px; }
+}
+
 /* ============ FOOTER ============ */
 .footer { background: #F3F1F5; display: flex; align-items: center; justify-content: center; padding: 48px 28px 40px; }
 .foot-inner { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 860px; width: 100%; }
