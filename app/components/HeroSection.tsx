@@ -161,7 +161,6 @@ export default function HeroSection() {
                   <option>Cuidadora en sanatorio</option>
                   <option>Cuidador profesional</option>
                   <option>Beneficios premium</option>
-                  <option>No estoy seguro</option>
                 </select>
               </div>
               <div className="field">

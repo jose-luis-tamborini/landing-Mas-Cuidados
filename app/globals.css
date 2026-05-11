@@ -115,7 +115,7 @@ button { font-family: inherit; cursor: pointer; border: 0; }
   font-size: 13px; color: var(--ink); transition: all .2s;
   appearance: none; -webkit-appearance: none;
 }
-.field select:invalid { color: #B6AEC0; }
+.field select:invalid { color: #6B5F78; }
 .field select:focus { outline: 0; border-color: #4A007D; box-shadow: 0 0 0 4px rgba(74,0,125,.12); }
 .field.select::after {
   content: ''; position: absolute; right: 20px; top: 50%;
@@ -256,7 +256,7 @@ section.caba-section {
 .caba-p { font-size: 15px; line-height: 1.6; color: #4A007D; margin: 0 0 28px; max-width: 360px; }
 .caba-btn { display: block; text-align: center; border-radius: 10px !important; padding: 14px 28px; margin: 0 auto; align-self: center; }
 .caba-map { display: grid; place-items: center; padding: 10px 20px; position: relative; }
-.caba-map img { width: 370px !important; height: auto !important; }
+.caba-map img { width: 540px !important; height: auto !important; }
 @keyframes pulse {
   0%,100% { box-shadow: 0 0 0 4px rgba(57,255,20,.25), 0 0 14px rgba(57,255,20,.7); }
   50%      { box-shadow: 0 0 0 10px rgba(57,255,20,0), 0 0 14px rgba(57,255,20,.7); }
@@ -267,7 +267,8 @@ section.stats { margin-top: -28px; background: linear-gradient(135deg, #8E64AC 0
 section.stats .section-title.upper { color: #4A007D; }
 .stats-grid { max-width: 1100px; margin: 50px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
 @media (max-width: 820px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-.stat-card { background: #F3F1F5; border-radius: 18px; padding: 28px 22px 26px; text-align: center; }
+.stat-card { background: #F3F1F5; border-radius: 18px; padding: 28px 22px 26px; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
+.stat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(74,0,125,.18); }
 .stat-icon { width: 56px; height: 56px; border-radius: 50%; background: transparent; display: grid; place-items: center; margin: 0 auto 16px; }
 .stat-title { font-size: 18px; font-weight: 800; color: #4A007D; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 8px; line-height: 1.3; }
 .stat-desc { font-size: 13px; color: #000; line-height: 1.5; margin: 0; }
