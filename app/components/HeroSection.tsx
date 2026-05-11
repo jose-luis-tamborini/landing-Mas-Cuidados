@@ -160,7 +160,6 @@ export default function HeroSection() {
                   <option>Cuidadora a domicilio</option>
                   <option>Cuidadora en sanatorio</option>
                   <option>Cuidador profesional</option>
-                  <option>Beneficios premium</option>
                 </select>
               </div>
               <div className="field">
