@@ -1,49 +1,56 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { CldImage } from "next-cloudinary";
+import { useState } from 'react';
+import { CldImage } from 'next-cloudinary';
 
-// Cloudinary public ID — hero background (landscape ~16:9, cuidadora con adulto mayor)
-const HERO_BG_ID = "mas-cuidados/hero-bg";
+// Cloudinary public IDs
+const HERO_BG_ID = 'hero_bg_ohgwet';
+const LOGO_FORM_ID = 'logos_form_xfq6sc'; // reemplazá con el ID real cuando subas el logo
 
-type Status = "idle" | "loading" | "success" | "error";
+type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export default function HeroSection() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Validación cliente — resalta campos vacíos requeridos
+    // Validación cliente
     let valid = true;
-    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>(
-      "input[required], select[required]"
-    ).forEach((el) => {
-      const wrap = el.closest(".field");
-      if (!el.value.trim()) { wrap?.classList.add("error"); valid = false; }
-      else wrap?.classList.remove("error");
-    });
+    form
+      .querySelectorAll<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >('input[required], select[required], textarea[required]')
+      .forEach((el) => {
+        const wrap = el.closest('.field');
+        if (!el.value.trim()) {
+          wrap?.classList.add('error');
+          valid = false;
+        } else wrap?.classList.remove('error');
+      });
     if (!valid) return;
 
-    setStatus("loading");
+    setStatus('loading');
     const data = Object.fromEntries(new FormData(form));
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
-        throw new Error(json.error ?? "Error al enviar.");
+        throw new Error(json.error ?? 'Error al enviar.');
       }
-      setStatus("success");
+      setStatus('success');
     } catch (err: unknown) {
-      setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Hubo un error. Intentá de nuevo.");
+      setStatus('error');
+      setErrorMsg(
+        err instanceof Error ? err.message : 'Hubo un error. Intentá de nuevo.',
+      );
     }
   }
 
@@ -56,7 +63,7 @@ export default function HeroSection() {
           alt="Cuidadora profesional acompañando a adulto mayor"
           fill
           priority
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
       </div>
 
@@ -64,33 +71,44 @@ export default function HeroSection() {
         {/* Left — marca y titular */}
         <div>
           <div className="hero-logo">
-            <span className="mark" aria-hidden="true">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 5v14M5 12h14" />
-              </svg>
-            </span>
-            <span>
-              <span className="wordmark">Más<span style={{ color: "#F7B2D9" }}>Cuidados</span></span>
-              <span className="tag">CUANDO MÁS NOS NECESITÁS</span>
-            </span>
+            <CldImage
+              src="logo_hero_hp4vf8"
+              alt="Más Cuidados"
+              width={336}
+              height={122}
+              style={{ objectFit: 'contain', height: 'auto' }}
+              priority
+            />
           </div>
 
           <h1>
-            Cuidadoras y acompañantes capacitados para{" "}
-            <span className="accent-pink">Sanatorios y Domicilios</span>
+            Cuidadoras y acompañantes
+            <br />
+            capacitados <span className="para">para</span>{' '}
+            <span className="accent-lilac">Sanatorios y Domicilios</span>
           </h1>
           <hr />
           <p className="lede">
-            Atención 24 hs, respuesta inmediata y la experiencia de un equipo que acompaña con compromiso desde 2010.
+            Atención 24 hs, respuesta inmediata y la experiencia de un equipo
+            que acompaña con compromiso desde 2010.
           </p>
         </div>
 
         {/* Right — form card */}
         <aside className="form-card" aria-labelledby="form-title">
-          {status === "success" ? (
+          {status === 'success' ? (
             <div className="form-success">
               <div className="check">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
@@ -100,25 +118,45 @@ export default function HeroSection() {
           ) : (
             <form onSubmit={handleSubmit} noValidate>
               <h2 className="form-title" id="form-title">
-                Solicitar <em>una cuidadora</em>
+                <span className="word-solicitar">Solicitar</span>{' '}
+                <span className="word-una-cuidadora">una cuidadora</span>
               </h2>
-              <p className="form-sub">Completá el formulario y te asesoramos.</p>
+              <p className="form-sub">
+                Completá el formulario y te asesoramos.
+              </p>
 
               <div className="field">
-                <input type="text" name="nombre" placeholder="Nombre y apellido" required />
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre"
+                  required
+                />
               </div>
               <div className="field">
-                <input type="tel" name="telefono" placeholder="Teléfono" required />
+                <input type="email" name="email" placeholder="Email" required />
               </div>
               <div className="field">
-                <input type="email" name="email" placeholder="Email" />
+                <input
+                  type="tel"
+                  name="whatsapp"
+                  placeholder="WhatsApp"
+                  required
+                />
               </div>
               <div className="field">
-                <input type="text" name="ciudad" placeholder="Ciudad" required />
+                <input
+                  type="text"
+                  name="ciudad"
+                  placeholder="Ciudad"
+                  required
+                />
               </div>
               <div className="field select">
                 <select name="servicio" required defaultValue="">
-                  <option value="" disabled>Servicio</option>
+                  <option value="" disabled>
+                    ¿Qué necesitás?
+                  </option>
                   <option>Cuidadora a domicilio</option>
                   <option>Cuidadora en sanatorio</option>
                   <option>Cuidador profesional</option>
@@ -126,45 +164,44 @@ export default function HeroSection() {
                   <option>No estoy seguro</option>
                 </select>
               </div>
+              <div className="field">
+                <textarea name="mensaje" placeholder="Mensaje" rows={3} />
+              </div>
 
-              <button className="submit" type="submit" disabled={status === "loading"}>
-                {status === "loading" ? "Enviando…" : "¡Quiero que me contacten!"}
+              <button
+                className="submit"
+                type="submit"
+                disabled={status === 'loading'}
+              >
+                {status === 'loading' ? 'Enviando…' : 'Quiero que me contacten'}
               </button>
 
-              {status === "error" && (
+              {status === 'error' && (
                 <p className="form-error-msg">{errorMsg}</p>
               )}
 
               <p className="form-foot">
-                Tus datos cumplen Términos, son tratados con privacidad. Política de privacidad.
+                Tus datos son confidenciales. Solo los usamos para asesorarte.{' '}
+                <a href="#" style={{ color: '#7B4FA6', fontWeight: 600 }}>
+                  Política de privacidad.
+                </a>
               </p>
 
-              <div className="form-badges">
-                <div className="form-badge">
-                  <div className="icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="32" height="32" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.37 1.85.72 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.35 1.8.59 2.73.72A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </div>
-                  <div className="label">ATENCIÓN<br />24 / 7</div>
-                </div>
-                <div className="form-badge">
-                  <div className="icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="32" height="32" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <path d="m9 12 2 2 4-4" />
-                    </svg>
-                  </div>
-                  <div className="label">RESPALDO<br />PROFESIONAL</div>
-                </div>
-                <div className="form-badge">
-                  <div className="icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="32" height="32" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                    </svg>
-                  </div>
-                  <div className="label">+15 AÑOS<br />CUIDANDO</div>
-                </div>
+              {/* Logo placeholder — reemplazá "mas-cuidados/logo-form" con el ID real */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: 10,
+                }}
+              >
+                <CldImage
+                  src={LOGO_FORM_ID}
+                  alt="Logo certificación"
+                  width={180}
+                  height={60}
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
             </form>
           )}
