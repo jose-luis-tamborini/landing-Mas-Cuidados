@@ -298,10 +298,13 @@ section.stats .section-title.upper { color: #4A007D; }
 @media (max-width: 640px) {
   /* Hero — centrar logo y textos, espacio bajo el form */
   .hero-logo { justify-content: center; }
-  .hero h1 { text-align: center; }
+  .hero h1 { text-align: center; font-size: 22px; }
   .hero hr { margin: 20px auto; }
   .hero p.lede { text-align: center; max-width: 100%; font-size: 17px; }
   .hero-inner { padding-bottom: 60px; }
+
+  /* Títulos de sección — todos al mismo tamaño */
+  .section-title, .caba-locations { font-size: 22px; }
 
   /* Mapa — más chico y sin overflow */
   .caba-map img { width: 80vw !important; max-width: 320px !important; }
