@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       getSupabase().from('contactos').insert(contacto),
       getResend().emails.send({
         from: process.env.RESEND_FROM!,
-        to: process.env.NOTIFICATION_EMAIL!,
+        to: process.env.NOTIFICATION_EMAIL!.split(',').map((s) => s.trim()),
         replyTo: contacto.email,
         subject: `Nuevo contacto: ${contacto.nombre} — ${contacto.servicio}`,
         html: `
