@@ -67,7 +67,7 @@ export default function ServiciosSection() {
               className="service-title"
               style={{ textTransform: 'uppercase', color: '#4A007D' }}
             >
-              Cuidador profesional
+              Cuidador/a profesional
             </h3>
             <ul>
               <li>Higiene y confort, asistencia diaria</li>

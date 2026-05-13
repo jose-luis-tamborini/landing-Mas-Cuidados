@@ -89,7 +89,11 @@ export default function PorQueSection() {
               width={423}
               height={555}
               priority
-              style={{ width: '444px', height: 'auto', display: 'block' }}
+              style={{
+                width: '444px',
+                height: 'auto',
+                display: 'block',
+              }}
             />
           </div>
         </div>
