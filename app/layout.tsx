@@ -43,6 +43,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {children}
+        <Script
+          id="asisteclick-button-fix"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
+  function fix() {
+    var btn = document.getElementById('asisteclick_button_css');
+    if (!btn) return false;
+    btn.style.setProperty('display', 'inline-flex', 'important');
+    btn.style.setProperty('align-items', 'center', 'important');
+    btn.style.setProperty('gap', '8px', 'important');
+    return true;
+  }
+  if (!fix()) {
+    var obs = new MutationObserver(function(_, o) { if (fix()) o.disconnect(); });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+})();`,
+          }}
+        />
       </body>
     </html>
   );

@@ -130,12 +130,12 @@ button { font-family: inherit; cursor: pointer; border: 0; }
 .field.error input,
 .field.error textarea { border-color: #E14F8C; box-shadow: 0 0 0 4px rgba(225,79,140,.12); }
 .submit {
-  width: 100%; margin-top: 8px; background: #FF00FE; color: #fff;
+  width: 100%; margin-top: 8px; background: var(--pink); color: #fff;
   border-radius: 10px; padding: 11px 20px; font-weight: 700; font-size: 14px;
   letter-spacing: .01em; transition: all .2s;
-  box-shadow: 0 10px 26px rgba(255,0,254,.32);
+  box-shadow: 0 10px 26px rgba(233,30,140,.32);
 }
-.submit:hover:not(:disabled) { background: #d900d9; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(255,0,254,.4); }
+.submit:hover:not(:disabled) { background: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(233,30,140,.4); }
 .submit:active { transform: translateY(0); }
 .submit:disabled { opacity: .7; cursor: not-allowed; transform: none; }
 .form-foot { margin-top: 10px; font-size: 11px; color: var(--muted); text-align: center; line-height: 1.5; }
@@ -334,6 +334,18 @@ section.stats .section-title.upper { color: #4A007D; }
 .foot-tag { font-size: 14px; line-height: 1.55; color: #4A007D; max-width: 360px; }
 .foot-contact { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: #4A007D; display: flex; align-items: center; gap: 8px; }
 .foot-copy { font-size: 12px; color: var(--muted); }
+
+/* ============ ASISTE CLICK WIDGET ============ */
+#asisteclick_button_floating,
+#asisteclick_button_floating * {
+  box-sizing: content-box;
+  line-height: normal;
+}
+#asisteclick_button_css {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
 
 /* ============ WHATSAPP FLOAT ============ */
 .wa-float {
