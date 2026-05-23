@@ -347,6 +347,10 @@ section.services .section-title.upper { color: #4A007D; }
   align-items: center !important;
   gap: 8px !important;
 }
+#asisteclick_button_floating button#asisteclick_button_css.asisteclick_button_css {
+  background-color: #e91e8c !important;
+  border-color: #e91e8c !important;
+}
 
 /* ============ WHATSAPP FLOAT ============ */
 .wa-float {
