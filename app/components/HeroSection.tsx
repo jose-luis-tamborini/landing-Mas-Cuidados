@@ -144,13 +144,16 @@ export default function HeroSection() {
                   required
                 />
               </div>
-              <div className="field">
-                <input
-                  type="text"
-                  name="ciudad"
-                  placeholder="Ciudad"
-                  required
-                />
+              <div className="field select">
+                <select name="ciudad" required defaultValue="">
+                  <option value="" disabled>Ciudad</option>
+                  <option>Rosario</option>
+                  <option>CABA</option>
+                  <option>Córdoba</option>
+                  <option>Santa Fe</option>
+                  <option>Paraná</option>
+                  <option>Otro</option>
+                </select>
               </div>
               <div className="field select">
                 <select name="servicio" required defaultValue="">
